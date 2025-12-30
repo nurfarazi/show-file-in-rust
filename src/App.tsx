@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { invoke } from '@tauri-apps/api/tauri';
+import { invoke } from '@tauri-apps/api/core';
 import { motion, AnimatePresence } from 'framer-motion';
 import { FolderPicker } from './components/FolderPicker';
 import { EvidenceBoard } from './components/EvidenceBoard';
@@ -105,7 +105,7 @@ function App() {
                 fontSize: '0.875rem',
                 zIndex: 999,
                 textTransform: 'uppercase',
-                letter-spacing: '0.05em',
+                letterSpacing: '0.05em',
               }}
             >
               ← New Investigation

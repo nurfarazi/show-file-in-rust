@@ -2,7 +2,7 @@ use chrono::{DateTime, Local, Duration};
 use serde::{Deserialize, Serialize};
 use std::collections::HashMap;
 use std::fs;
-use std::path::{Path, PathBuf};
+use std::path::Path;
 use walkdir::WalkDir;
 
 #[derive(Debug, Clone, Serialize, Deserialize)]
@@ -61,7 +61,7 @@ pub fn analyze_folder(path: &str) -> Result<AnalysisResult, String> {
 
     let mut files = Vec::new();
     let mut folders = 0;
-    let mut hidden_count = 0;
+    let mut hidden_file_count = 0;
     let now = Local::now();
 
     // Walk directory tree
@@ -79,7 +79,7 @@ pub fn analyze_folder(path: &str) -> Result<AnalysisResult, String> {
             .map(|name| name.starts_with('.'))
             .unwrap_or(false)
         {
-            hidden_count += 1;
+            hidden_file_count += 1;
         }
 
         if path.is_file() {
@@ -167,7 +167,7 @@ pub fn analyze_folder(path: &str) -> Result<AnalysisResult, String> {
 
             // Track oldest
             if oldest_file.is_none()
-                || age > (now.timestamp() - chrono::DateTime::parse_from_rfc3339(&format!(
+                || age > chrono::DateTime::parse_from_rfc3339(&format!(
                     "{}+00:00",
                     oldest_file
                         .as_ref()
@@ -175,15 +175,15 @@ pub fn analyze_folder(path: &str) -> Result<AnalysisResult, String> {
                         .modified
                         .replace(" ", "T")
                 ))
-                .map(|d| (now.timestamp() - d.timestamp()) as f64)
-                .unwrap_or(0.0))
+                .map(|d| (now.timestamp() - d.timestamp()) as f64 / 86400.0)
+                .unwrap_or(0.0)
             {
                 oldest_file = Some(file.clone());
             }
 
             // Track newest
             if newest_file.is_none()
-                || age < (now.timestamp() - chrono::DateTime::parse_from_rfc3339(&format!(
+                || age < chrono::DateTime::parse_from_rfc3339(&format!(
                     "{}+00:00",
                     newest_file
                         .as_ref()
@@ -191,8 +191,8 @@ pub fn analyze_folder(path: &str) -> Result<AnalysisResult, String> {
                         .modified
                         .replace(" ", "T")
                 ))
-                .map(|d| (now.timestamp() - d.timestamp()) as f64)
-                .unwrap_or(f64::MAX))
+                .map(|d| (now.timestamp() - d.timestamp()) as f64 / 86400.0)
+                .unwrap_or(f64::MAX)
             {
                 newest_file = Some(file.clone());
             }

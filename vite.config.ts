@@ -3,9 +3,15 @@ import react from "@vitejs/plugin-react";
 
 export default defineConfig({
   plugins: [react()],
+  clearScreen: false,
+  server: {
+    port: 5173,
+    strictPort: true,
+  },
+  envPrefix: ["VITE_", "TAURI_"],
   build: {
     target: "esnext",
     minify: false,
-    outDir: "../src-tauri/gen/macos/App.app/Contents/Resources",
+    outDir: "../dist",
   },
 });

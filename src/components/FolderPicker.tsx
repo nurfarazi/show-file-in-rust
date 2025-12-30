@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { open } from '@tauri-apps/api/dialog';
+import { open } from '@tauri-apps/plugin-dialog';
 import { motion } from 'framer-motion';
-import { Magnifying Glass as MagnifyingGlassIcon, Folder } from 'lucide-react';
+import { Search as MagnifyingGlassIcon, Folder } from 'lucide-react';
 import styles from './FolderPicker.module.css';
 
 interface FolderPickerProps {

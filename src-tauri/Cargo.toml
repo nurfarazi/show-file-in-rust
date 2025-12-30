@@ -9,7 +9,9 @@ tauri-build = { version = "2.0", features = [] }
 [dependencies]
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
-tauri = { version = "2.0", features = ["shell-open", "dialog-open"] }
+tauri = { version = "2.0", features = [] }
+tauri-plugin-shell = "2.0"
+tauri-plugin-dialog = "2.0"
 tokio = { version = "1", features = ["full"] }
 chrono = "0.4"
 walkdir = "2"
