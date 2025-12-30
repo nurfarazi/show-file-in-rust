@@ -1,0 +1,170 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 100%);
+  position: relative;
+  overflow: hidden;
+}
+
+.header {
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--accent-amber);
+  background: rgba(42, 37, 32, 0.5);
+  backdrop-filter: blur(10px);
+}
+
+.title {
+  font-size: 1.75rem;
+  font-family: var(--font-display);
+  color: var(--accent-amber);
+  margin: 0 0 0.5rem 0;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.6);
+  letter-spacing: 0.1em;
+}
+
+.path {
+  font-size: 0.85rem;
+  color: var(--text-cream);
+  opacity: 0.8;
+  margin: 0;
+  font-family: var(--font-mono);
+  word-break: break-all;
+}
+
+.mainContent {
+  display: flex;
+  flex: 1;
+  gap: 1rem;
+  padding: 1rem;
+  min-height: 0;
+}
+
+.boardContainer {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  border-radius: 4px;
+  background: linear-gradient(135deg, #2a2520 0%, #1a1a1a 100%);
+  border: 1px solid var(--accent-amber);
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.boardContainer:hover {
+  box-shadow: inset 0 0 50px rgba(212, 165, 116, 0.1);
+}
+
+.board {
+  width: 100%;
+  height: 100%;
+  padding: 1.5rem;
+  overflow-y: auto;
+  overflow-x: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.cardGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.25rem;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  color: var(--text-cream);
+  opacity: 0.6;
+  text-align: center;
+  font-size: 1.1rem;
+  font-family: var(--font-header);
+}
+
+.redString {
+  position: absolute;
+  width: 2px;
+  height: 100%;
+  background: linear-gradient(180deg, transparent, #cc5555 50%, transparent);
+  left: 30%;
+  top: 0;
+  opacity: 0.3;
+  pointer-events: none;
+  animation: redStringDraw 1s ease-in-out;
+}
+
+@keyframes redStringDraw {
+  from {
+    opacity: 0;
+    height: 0;
+  }
+  to {
+    opacity: 0.3;
+    height: 100%;
+  }
+}
+
+/* Scrollbar styling */
+.board::-webkit-scrollbar {
+  width: 10px;
+}
+
+.board::-webkit-scrollbar-track {
+  background: var(--bg-secondary);
+  border-radius: 4px;
+}
+
+.board::-webkit-scrollbar-thumb {
+  background: var(--accent-amber);
+  border-radius: 4px;
+}
+
+.board::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-yellow);
+}
+
+/* Pin animation */
+@keyframes pinDrop {
+  0% {
+    transform: translateY(-50px) rotate(0deg);
+    opacity: 0;
+  }
+  70% {
+    transform: translateY(0) rotate(-5deg);
+  }
+  100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive */
+@media (max-width: 1200px) {
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+  }
+}
+
+@media (max-width: 768px) {
+  .mainContent {
+    flex-direction: column;
+  }
+
+  .cardGrid {
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  }
+}

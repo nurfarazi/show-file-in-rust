@@ -1,0 +1,194 @@
+.card {
+  position: relative;
+  background: linear-gradient(135deg, #3a3530 0%, #2a2520 100%);
+  border: 1px solid var(--accent-amber);
+  border-radius: 2px;
+  padding: 1.25rem;
+  cursor: pointer;
+  transform-origin: center;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
+  overflow: hidden;
+  min-height: 180px;
+  display: flex;
+  flex-direction: column;
+  transition: box-shadow 0.3s ease;
+
+  /* Vintage card texture */
+  background-image:
+    linear-gradient(135deg, #3a3530 0%, #2a2520 100%),
+    repeating-linear-gradient(
+      45deg,
+      transparent,
+      transparent 2px,
+      rgba(212, 165, 116, 0.02) 2px,
+      rgba(212, 165, 116, 0.02) 4px
+    );
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2" /></filter><rect width="100" height="100" fill="rgba(0,0,0,0.05)" filter="url(%23noise)" /></svg>');
+  opacity: 0.03;
+  pointer-events: none;
+}
+
+.card::after {
+  content: '';
+  position: absolute;
+  top: -1px;
+  left: -1px;
+  right: -1px;
+  bottom: -1px;
+  background: linear-gradient(135deg, rgba(212, 165, 116, 0.1), transparent);
+  border-radius: 2px;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.card:hover::after {
+  opacity: 1;
+}
+
+.pin {
+  position: absolute;
+  top: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 20px;
+  background: radial-gradient(circle at 30% 30%, #ff6b6b 0%, #cc5555 100%);
+  border-radius: 50% 50% 50% 50% / 60% 60% 40% 40%;
+  box-shadow: inset -1px -1px 2px rgba(0, 0, 0, 0.3), 0 3px 8px rgba(0, 0, 0, 0.5);
+  z-index: 10;
+  opacity: 0.9;
+}
+
+.header {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 2;
+}
+
+.iconWrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  background: rgba(212, 165, 116, 0.15);
+  border-radius: 4px;
+  color: var(--accent-amber);
+  flex-shrink: 0;
+}
+
+.filename {
+  flex: 1;
+  min-width: 0;
+}
+
+.name {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-white);
+  word-break: break-word;
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.extension {
+  font-size: 0.75rem;
+  color: var(--accent-amber);
+  margin-top: 0.25rem;
+  opacity: 0.8;
+  text-transform: uppercase;
+  font-family: var(--font-ui);
+  font-weight: 500;
+}
+
+.details {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  position: relative;
+  z-index: 2;
+  flex: 1;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  color: var(--text-cream);
+  opacity: 0.85;
+  font-family: var(--font-mono);
+}
+
+.depth {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  color: var(--accent-yellow);
+  font-weight: 500;
+}
+
+.stamp {
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+  padding: 0.25rem 0.5rem;
+  background: transparent;
+  border: 1px dashed var(--accent-yellow);
+  color: var(--accent-yellow);
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  transform: rotate(15deg);
+  opacity: 0.6;
+  font-family: var(--font-ui);
+}
+
+.expanded {
+  position: relative;
+  z-index: 2;
+}
+
+.divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--accent-amber),
+    transparent
+  );
+  margin: 0.75rem 0;
+}
+
+.label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent-amber);
+  margin: 0.5rem 0 0.25rem 0;
+  font-weight: 600;
+  font-family: var(--font-ui);
+}
+
+.path {
+  font-size: 0.75rem;
+  color: var(--text-cream);
+  opacity: 0.8;
+  word-break: break-all;
+  line-height: 1.4;
+  margin: 0;
+  font-family: var(--font-mono);
+}

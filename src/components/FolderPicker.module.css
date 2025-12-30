@@ -1,0 +1,147 @@
+.container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #1a1a1a 0%, #2a2520 50%, #1a1a1a 100%);
+}
+
+.background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(212, 165, 116, 0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.content {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  max-width: 600px;
+  padding: 2rem;
+}
+
+.title {
+  font-size: 4rem;
+  font-family: var(--font-display);
+  color: var(--accent-amber);
+  margin-bottom: 0.25rem;
+  text-shadow: 0 4px 16px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.15em;
+  font-weight: 400;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  color: var(--accent-yellow);
+  font-family: var(--font-header);
+  margin-bottom: 2rem;
+  letter-spacing: 0.1em;
+  font-weight: 300;
+}
+
+.description {
+  margin: 2rem 0;
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: var(--text-cream);
+}
+
+.description p {
+  margin-bottom: 0.75rem;
+  opacity: 0.9;
+}
+
+.pickButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  margin: 2rem 0;
+  padding: 1rem 2.5rem;
+  background: linear-gradient(135deg, var(--accent-amber) 0%, #c9944a 100%);
+  color: #1a1a1a;
+  font-weight: 700;
+  font-size: 0.875rem;
+  letter-spacing: 0.08em;
+  border: 2px solid var(--accent-amber);
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(212, 165, 116, 0.3);
+  transition: all 0.3s cubic-bezier(0.23, 1, 0.320, 1);
+  font-family: var(--font-ui);
+}
+
+.pickButton:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--accent-yellow) 0%, #ffc107 100%);
+  border-color: var(--accent-yellow);
+  box-shadow: 0 12px 32px rgba(255, 217, 61, 0.4);
+  transform: translateY(-3px);
+}
+
+.pickButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.pathDisplay {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(42, 37, 32, 0.7);
+  border: 1px solid var(--accent-amber);
+  border-radius: 4px;
+  backdrop-filter: blur(10px);
+}
+
+.label {
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--accent-amber);
+  margin-bottom: 0.5rem;
+  font-weight: 600;
+}
+
+.path {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--text-white);
+  word-break: break-all;
+  line-height: 1.5;
+}
+
+.loading {
+  margin-top: 2rem;
+  color: var(--accent-amber);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: pulse 1.5s ease-in-out infinite;
+}
+
+.filmGrain {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  background-image:
+    url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="4" seed="2" /></filter><rect width="100" height="100" fill="rgba(0,0,0,0.05)" filter="url(%23noise)" /></svg>');
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  animation: grain 8s steps(10) infinite;
+}
+
+@keyframes grain {
+  0% { background-position: 0 0; }
+  100% { background-position: 100px 100px; }
+}

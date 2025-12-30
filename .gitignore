@@ -1,0 +1,72 @@
+# Node.js
+node_modules/
+npm-debug.log
+npm-error.log
+yarn-error.log
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Vite
+dist/
+.vite/
+
+# Rust / Cargo
+target/
+Cargo.lock
+**/*.rs.bk
+*.pdb
+
+# Tauri build artifacts
+src-tauri/target/
+src-tauri/gen/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+.env.local
+.env.*.local
+*.sublime-project
+*.sublime-workspace
+
+# OS
+.DS_Store
+Thumbs.db
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+desktop.ini
+
+# Development
+.env
+.env.development
+.env.production
+.env.test
+
+# Logs
+logs/
+*.log
+
+# Tauri-specific
+src-tauri/target/
+src-tauri/gen/
+src-tauri/.cargo/
+
+# Build outputs
+dist/
+build/
+*.dmg
+*.exe
+*.msi
+*.app
+*.deb
+*.AppImage
+
+# Temporary files
+*.tmp
+*.temp
+*.bak

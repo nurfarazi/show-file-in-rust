@@ -1,0 +1,22 @@
+[package]
+name = "file-detective"
+version = "0.1.0"
+edition = "2021"
+
+[build-dependencies]
+tauri-build = { version = "2.0", features = [] }
+
+[dependencies]
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tauri = { version = "2.0", features = ["shell-open", "dialog-open"] }
+tokio = { version = "1", features = ["full"] }
+chrono = "0.4"
+walkdir = "2"
+rayon = "1.7"
+
+[profile.release]
+opt-level = "z"
+lto = true
+codegen-units = 1
+strip = true
