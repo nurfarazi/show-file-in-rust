@@ -119,10 +119,12 @@
 }
 
 .loading {
-  margin-top: 1rem;
+  margin-top: 2rem;
+  color: var(--accent-amber);
   display: flex;
   align-items: center;
   justify-content: center;
+  animation: pulse 1.5s ease-in-out infinite;
 }
 
 .filmGrain {

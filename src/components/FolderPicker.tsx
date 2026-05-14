@@ -2,9 +2,7 @@ import React, { useState } from 'react';
 import { open } from '@tauri-apps/plugin-dialog';
 import { motion } from 'framer-motion';
 import { Search as MagnifyingGlassIcon, Folder } from 'lucide-react';
-import Lottie from 'lottie-react';
 import styles from './FolderPicker.module.css';
-import loadingAnimation from '../assets/animations/loading.json';
 
 interface FolderPickerProps {
   onFolderSelected: (path: string) => void;
@@ -79,13 +77,13 @@ export function FolderPicker({ onFolderSelected, isLoading }: FolderPickerProps)
         )}
 
         {isLoading && (
-          <div className={styles.loading}>
-            <Lottie 
-              animationData={loadingAnimation} 
-              loop={true} 
-              style={{ width: 200, height: 200 }}
-            />
-          </div>
+          <motion.div
+            className={styles.loading}
+            animate={{ rotate: 360 }}
+            transition={{ duration: 2, repeat: Infinity, ease: 'linear' }}
+          >
+            <MagnifyingGlassIcon size={40} />
+          </motion.div>
         )}
       </motion.div>
 
